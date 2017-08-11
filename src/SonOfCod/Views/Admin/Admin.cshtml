@@ -1,0 +1,24 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using BasicAuthentication.ViewModels
+@using System.Security.Claims
+@model LoginViewModel
+
+<h2 id="Admin-Portal-Header">Admin Portal</h2>
+<hr />
+@if (User.Identity.IsAuthenticated)
+{
+    <p>this is where  the list of all users in Db are found</p>
+        @using (Html.BeginForm("LogOff", "Admin"))
+        {
+            <input type="submit" class="btn btn-default" value="Log out" />
+        }
+}
+else
+{
+
+        <button>@Html.ActionLink("Log in", "Login")</button>
+}
